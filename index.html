@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>百分比展示</title>
+    <style type="text/css" media="screen">
+        .score_chart{
+            height: 148px;
+            width: 148px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .score_chart_text{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-size: 30px;
+            color: #307b20;
+            z-index: 3;
+            text-align: center;
+            line-height: 148px;
+            font-weight: bold;
+        }
+        .score_chart_mask{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background:url(./bg13.png);
+            z-index: 2;
+            top:-26px;
+            left:-26px;
+        }
+        .score_chart_move{
+            position: absolute;
+            background: url(./bg14.png);
+            width: 200px;
+            height: 200px;
+            left: -26px;
+            transition: all .3s linear;
+            z-index: 1;
+            top:124px;
+        }
+    </style>
+</head>
+<body>
+    <div class="score_chart">
+        <div class="score_chart_text" id="count">0</div>
+        <div class="score_chart_mask"></div>
+        <div class="score_chart_move" id="move"></div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = function(){
+        var move = document.getElementById('move');
+        var top = parseInt($(move).css('top'));
+        var section = parseInt(top / 100);
+        var i = 0,count=0;
+        setInterval(function(){
+            if(top > 0){
+                top--;
+                i++;
+                move.style.top = top+'px';
+                $('#count').text(count++);
+            }
+        }, 50)
+    }
+</script>
+</html>

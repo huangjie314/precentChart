@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>百分比展示</title>
+    <style type="text/css" media="screen">
+        .scort-chart{
+            position: relative;
+            height: 148px;
+            width: 148px;
+            overflow: hidden;
+            margin: 0 auto;
+            background: url(./bg13.png) -26px -26px;
+        }
+        .scort-chart-text{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            font-size: 30px;
+            text-align: center;
+            line-height: 148px;
+            font-weight: bold;
+            color: green;
+        }
+        .scort-chart-move{
+            position: absolute;
+            background: url('./bg14.png');
+            width: 200px;
+            height: 200px;
+            z-index: -1;
+            left: -26px;
+            transition: all .3s linear;
+            top:124px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scort-chart">
+        <div class="scort-chart-text" id="count">0</div>
+        <div class="scort-chart-move" id="move"></div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = function(){
+        var move = document.getElementById('move');
+        var top = parseInt($(move).css('top'));
+        var section = parseInt(top / 100);
+        var i = 0,count=0;
+        setInterval(function(){
+            if(top > 0){
+                top--;
+                i++;
+                move.style.top = top+'px';
+                $('#count').text(count++);
+            }
+        }, 50)
+    }
+</script>
+</html>
